@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes,User,Contact) => {
-const userContacts = sequelize.define('user_contacts', {
+const userContacts = sequelize.define('userContacts', {
     UserId: {
       type: DataTypes.INTEGER,
       references: {
@@ -17,7 +17,7 @@ const userContacts = sequelize.define('user_contacts', {
   },{
     timestamps:false
   },{
-    tableName:"user_contacts"
+    tableName:"userContacts"
   });
   return userContacts
 }

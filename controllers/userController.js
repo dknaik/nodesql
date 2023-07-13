@@ -12,6 +12,7 @@ console.log("dbuserrrr", db.user)
 let User = db.user
 let Contact =  db.contact
 let UserContact = db.userContacts
+let Categories = db.categories
 let addUser = async (req, res) => {
   const jane = await User.create({ firstName: "Amitamama", lastName: "Shaha" })
   //   const jane = User.build({ firstName: "Jane", lastName: "singh" })
@@ -231,22 +232,22 @@ let data= await User.findAll({
 
 }
 const manyToManyUser = async(req,res)=>{
-//  const data1= await User.create({firstName:'Madhu',lastName:"Prabhakar",middleName:"D"})
+//  const data1= await User.create({firstName:'Arun',lastName:"Dinkar",middleName:"D"})
 //  if(data1 && data1.id){
-//    await Contact.create({permanent_address:'Jodpur gam',current_addres:'Derasar Road',user_id:data1.id})
+  //  await Contact.create({permanent_address:'Prahalad Nagar',current_addres:'Derasar m Road',user_id:data1.id})
 //  }
  //now creating junction table manually but this will be dynamic when you use API
-// const data1 =  await UserContact.create({UserId:3,ContactId:2})
+// const data1 =  await UserContact.create({UserId:1,ContactId:2})
 
- let data1= await User.findAll({
-  attributes:['firstName','lastName','id'],
-  include:[{
-    model:Contact,
-    attributes:['permanent_address','current_addres','user_id'],
+//  let data1= await User.findAll({
+//   attributes:['firstName','lastName','id'],
+//   include:[{
+//     model:Contact,
+//     attributes:['permanent_address','current_addres','user_id'],
          
          
-     }],
- })
+//      }],
+//  })
   // const data =  await UserContact.findAll({})
 // let data= await User.findAll({
   // attributes:['firstName','lastName','id'],
@@ -256,20 +257,43 @@ const manyToManyUser = async(req,res)=>{
   // }], 
   // where:{id:2}
 // });
-// let data= await Contact.findAll({
-//   attributes:['permanent_address','current_addres','user_id'],
-//   include:[{
-//     model:User,
-//     as:'userDetails',
-//     attributes:['firstName','lastName','id']
-//   }],
-//   // where:{id:2}
+let data1= await Contact.findAll({
+  attributes:['permanent_address','current_addres'],
+  include:[{
+    model:User,
+    // as:'userDetails',
+    attributes:['firstName','lastName']
+  }],
+  // where:{id:2}
 
-// });
+});
   
   res.status(200).json({data:data1});
 
 }
+
+const paranoidUser=async(req,res)=>{
+  // let data=await User.create({firstName:'sham',lastName:'Kumar','middleName':'ganesh'})
+  //If date is stored then it's soft deleted and on fetching the data only those recored with null comes
+  var data=await User.destroy({
+   where:{
+    id:2
+   },
+   //delete permenently
+  //  force:true
+  })
+  // await User.restore();//To restore all
+  await User.restore({where:{
+    id:2
+  }});
+
+  // let data =  await User.findAll({})
+  res.status(200).json({data:data})
+}
+// const createCategory= async(req,res)=>{
+//   var data=await Categories.create({name:"Electronics",description:"abc",parent_cat_id:'1'})
+//   res.status(200).json({data:data})
+// }
 
 module.exports = {
   addUser,
@@ -284,5 +308,7 @@ module.exports = {
   logout,
   oneToOneUser,
   oneToManyUser,
-  manyToManyUser
+  manyToManyUser,
+  paranoidUser,
+  // createCategory
 }

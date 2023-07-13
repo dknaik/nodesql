@@ -47,10 +47,13 @@ module.exports = (sequelize, DataTypes) => {
       // }
     },
     {
-      // sequelize
+      sequelize,
       // modelName: "User"
       // Other model options go here
-      tableName: "users"
+      tableName: "users",
+      paranoid:true,
+      deletedAt:'soft_delete'
+
     }
   )
   return User

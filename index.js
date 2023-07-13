@@ -18,6 +18,8 @@ const cookieParser = require("cookie-parser")
 // }).unknown(false)
 require("./models/index")
 let userCtrl = require("./controllers/userController")
+let categoryCtrl=require("./controllers/categories")
+let productCtrl=require("./controllers/products")
 const Joi = require("joi")
 const { isAuthenticatedUser } = require("./middleware/auth")
 // const sequelize = require("./models")
@@ -116,6 +118,18 @@ app.get("/finders", userCtrl.findersData)
 app.get('/one-to-one',userCtrl.oneToOneUser)
 app.get('/one-to-many',userCtrl.oneToManyUser);
 app.get('/many-to-many',userCtrl.manyToManyUser);
+app.get('/paranoid',userCtrl.paranoidUser);
+/////////////Categories API
+app.get('/create-category',categoryCtrl.createCategory);
+app.get('/update-category/:id',categoryCtrl.updateCategory);
+app.get('/get-categories',categoryCtrl.getCategory)
+app.get('/delete-category/:id',categoryCtrl.deleteCategory)
+
+
+/////Product API
+app.get('/create-product',productCtrl.createProduct);
+
+
 
 
 // User.sync({ force: true })
