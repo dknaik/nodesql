@@ -67,7 +67,7 @@ db.categories.hasMany(db.categories, {
 
 // db.contact.belongsToMany(db.user,{through:'user_contacts'});
 // db.contact.belongsToMany(db.user,{through:db.userContacts});
-db.categories.belongsToMany(db.products,{through:db.productCategories})
+db.categories.hasMany(db.products,{foreignKey:'parent_cat_id'})
 
 
 
