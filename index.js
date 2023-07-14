@@ -120,11 +120,11 @@ app.get('/one-to-many',userCtrl.oneToManyUser);
 app.get('/many-to-many',userCtrl.manyToManyUser);
 app.get('/paranoid',userCtrl.paranoidUser);
 /////////////Categories API
-app.get('/create-category',categoryCtrl.createCategory);
-app.get('/create-subcategory',categoryCtrl.createSubCategory);
+app.post('/create-category',categoryCtrl.createCategory);
+app.post('/create-subcategory',categoryCtrl.createSubCategory);
 app.get('/get-only-category',categoryCtrl.onlyGetCategories)
 app.get('/get-only-subcategory/:id',categoryCtrl.onlyGetSubCategoriesByCatId)
-app.get('/update-category/:id',categoryCtrl.updateCategory);
+app.put('/update-category/:id',categoryCtrl.updateCategory);
 app.get('/get-categories',categoryCtrl.getCategory)
 app.get('/delete-category/:id',categoryCtrl.deleteCategory)
 
