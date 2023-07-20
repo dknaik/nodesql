@@ -1,6 +1,6 @@
 let db= require("../models/index")
 let Categories = db.categories
-const { Sequelize } = require("sequelize");
+const { Sequelize ,Op} = require("sequelize");
 let Products=db.products
 const createCategory= async(req,res)=>{
   console.log("reqqqcreateCategory",req)
@@ -21,13 +21,40 @@ const createCategory= async(req,res)=>{
   const onlyGetSubCategoriesByCatId=async(req,res)=>{ 
     //you have to get parent Category Id here
     console.log("parentcatid",req.params.id)
+
   let data=await Categories.findAll({where:{parent_cat_id:req.params.id}})
   res.status(200).json({data:data})
   }
+  const updateSubCategory=async(req,res)=>{
+    //you need can update the parent category for subcatgory also  
+    const category= await Categories.findOne({
+      where: {
+        id: req.params.id,
+        parent_cat_id: {
+          [Op.not]: null,
+        },
+      },
+    });  
+     if (!category) {
+    return res.status(400).json({ error: 'Cannot update subcategory with null parent_cat_id' });
+  }
+    let data=await Categories.update({...req.body,parent_cat_id:req.body.catgoryId},{where:{id:req.params.id}})
+    res.status(200).json({data:data})
+  }
   const updateCategory=async(req,res)=>{
     console.log("request",req.params.id)
+    const category=await Categories.findOne({
+      where:{
+        id:req.params.id,
+        parent_cat_id:null
+      }
+    })
+    if(!category){
+      return res.status(400).json({error:"Cannot update category with non null parent_cat_id"})
+    }
+    
 
-    var data=await Categories.update(...req.body,{where:{id:req.params.id}})
+    let data=await Categories.update({...req.body},{where:{id:req.params.id,parent_cat_id:null}})
     res.status(200).json({data:data})
   }
   const getCategory=async(req,res)=>{
@@ -48,7 +75,6 @@ const createCategory= async(req,res)=>{
       //     [Sequelize.Op.not]: null, // Fetch only categories with a parent_cat_id
       //   },
       // },
-    
     })
     res.status(200).json({data:data})
   }
@@ -69,5 +95,6 @@ const createCategory= async(req,res)=>{
     deleteCategory,
     createSubCategory,
     onlyGetCategories,
-    onlyGetSubCategoriesByCatId
+    onlyGetSubCategoriesByCatId,
+    updateSubCategory
   }

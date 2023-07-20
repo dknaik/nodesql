@@ -14,7 +14,6 @@ const getallproducts=async(req,res)=>{
 }
 const updateProduct= async(req,res)=>{
     
-    console.log("payload",payload)
     let data = await Products.update({...req.body,parent_cat_id:req.body.catgoryId},{where:{id:req.params.id}})
     res.status(200).json({data:data})
 }

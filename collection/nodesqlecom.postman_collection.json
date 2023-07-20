@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "3a58beac-75e2-4ac0-974f-2826660c6686",
+		"name": "nodesqlecom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28300234"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "create-product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"catgoryId\":\"1\",\n\n    // \"subCategoryId\":\"2\",\n    \"name\":\"new product\",\n    \"description\":\"abc\",\n    \"price\":\"1000\",\n    \"quantity_available\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/create-product",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"create-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.142:3010/get-all-products",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"get-all-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"catgoryId\":\"3\",\n\n    // \"subCategoryId\":\"2\",\n    \"name\":\"new product updated\",\n    \"description\":\"abc\",\n    \"price\":\"1000\",\n    \"quantity_available\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/update-product/5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"update-product",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete- product",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "create-category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Books\",\n    \"description\":\"Books Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/create-category",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"create-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-sub-category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"catgoryId\":\"1\",\n    \"name\":\"Rich Dad Poor Dad\",\n    \"description\":\"book description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/create-subcategory",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"create-subcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.142:3010/get-only-category",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"get-only-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-subcategories",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update-subcategories",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"catgoryId\":\"1\",\n    \"name\":\"Laptop updated\",\n    \"description\":\"Laptop description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/update-subcategory/2",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"update-subcategory",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Laptops\",\n    \"description\":\"Laptops Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/update-category/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"update-category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "add-to-cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"2\",\n    \"quantity\":\"1\",\n    \"ProductId\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/add-to-cart",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"add-to-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-cart-items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/get-cart-products",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"get-cart-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-cart-items",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"2\",\n    \"quantity\":\"5\",\n    \"ProductId\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/update-cart-product",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"update-cart-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-cart-item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart_id\":\"1\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/remove-cart-product/5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"remove-cart-product",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "place order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\n       \"user_id\":\"2\"\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/place-order",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"place-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-order-table",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.142:3010/get-order-table",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"142"
+							],
+							"port": "3010",
+							"path": [
+								"get-order-table"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"xyz@gmail.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.0.142:3010/login",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"142"
+					],
+					"port": "3010",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"firstName\":\"dinesh\",\n   \"middleName\":\"s\",\n   \"lastName\":\"naik\",\n   \"email\":\"xyyyz@gmail.com\",\n   \"username\":\"dinesh\",\n   \"password\":\"123456\",\n   \"role\":1 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.0.142:3010/users",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"142"
+					],
+					"port": "3010",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.0.142:3010/logout",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"142"
+					],
+					"port": "3010",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY4ODg5MTE4MCwiZXhwIjoxNjg4ODk0NzgwfQ.xqHrOXpCP2_9WpQ8tK_Rzi-YHVcNbfv7NjE92jyuBPc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.0.142:3010/users?limit=5&offset=0",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"142"
+					],
+					"port": "3010",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,6 @@
 
 module.exports = (sequelize,DataTypes)=>{
-    const orderTable = sequelize.define("OrderTable",{
+    const orderItems = sequelize.define("orderitem",{
         id:{
             type:DataTypes.INTEGER,
             primaryKey:true,
@@ -17,8 +17,15 @@ module.exports = (sequelize,DataTypes)=>{
         },
         price_per_unit:{
             type:DataTypes.INTEGER
+        },
+        InvoiceId:{
+             type:DataTypes.INTEGER,
+             allowNull: true,
+
         }
     
+    },{
+        tableName:"orderitem"
     }) 
-    return orderTable
+    return orderItems
     }

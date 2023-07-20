@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken")
 const { Sequelize } = require("sequelize")
 const bcrypt = require("bcryptjs")
 const { createUserSchema } = require("../validators/user")
-console.log("dbuserrrr", db.user)
+// console.log("dbuserrrr", db.user)
 let User = db.user
 let Contact =  db.contact
 let UserContact = db.userContacts
@@ -44,6 +44,7 @@ let getUsersById = async (req, res) => {
 }
 /////////////////////////////////////////////////////////create user
 let createUser = async (req, res) => {
+  console.log("creating user error")
   try {
     const { password, ...rest } = req.body
     const hashedPassword = await bcrypt.hash(password, 10)

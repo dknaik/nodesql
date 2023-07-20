@@ -1,12 +1,12 @@
 
 module.exports = (sequelize,DataTypes)=>{
-const orderTable = sequelize.define("OrderTable",{
+const orderTable = sequelize.define("ordertable",{
     id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true
     },
-    customer_id:{
+    user_id:{
         type:DataTypes.INTEGER
     },
     order_date:{
@@ -16,6 +16,8 @@ const orderTable = sequelize.define("OrderTable",{
         type:DataTypes.INTEGER
     }
 
+},{
+    tableName:"ordertable"
 }) 
 return orderTable
 }

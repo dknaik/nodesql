@@ -14,9 +14,13 @@
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.3.3",
+    "nodemailer": "^6.9.4",
+    "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
     "sequelize": "^6.32.0"
   }
 }

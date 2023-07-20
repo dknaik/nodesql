@@ -20,6 +20,10 @@ require("./models/index")
 let userCtrl = require("./controllers/userController")
 let categoryCtrl=require("./controllers/categories")
 let productCtrl=require("./controllers/products")
+let pdfCtrl=require("./controllers/pdfkit")
+let cartCtrl=require("./controllers/cart")
+let ordertableCtrl = require("./controllers/ordertable")
+let emailCtrl= require("./controllers/email")
 const Joi = require("joi")
 const { isAuthenticatedUser } = require("./middleware/auth")
 // const sequelize = require("./models")
@@ -124,6 +128,7 @@ app.post('/create-category',categoryCtrl.createCategory);
 app.post('/create-subcategory',categoryCtrl.createSubCategory);
 app.get('/get-only-category',categoryCtrl.onlyGetCategories)
 app.get('/get-only-subcategory/:id',categoryCtrl.onlyGetSubCategoriesByCatId)
+app.put('/update-subcategory/:id',categoryCtrl.updateSubCategory);
 app.put('/update-category/:id',categoryCtrl.updateCategory);
 app.get('/get-categories',categoryCtrl.getCategory)
 app.get('/delete-category/:id',categoryCtrl.deleteCategory)
@@ -135,7 +140,19 @@ app.get('/get-all-products',productCtrl.getallproducts);
 app.put('/update-product/:id',productCtrl.updateProduct);
 app.delete('/delete-product/:id',productCtrl.deleteProduct);
 
+/////add to cart
+app.post('/add-to-cart',cartCtrl.addProductToCart)
+app.get('/get-cart-products',cartCtrl.getCartProduct)
+app.put('/update-cart-product',cartCtrl.updateCart);
+app.delete('/remove-cart-product/:id',cartCtrl.deleteCart)
 
+////order table
+app.get('/place-order',ordertableCtrl.placeOrder)
+app.get('/get-order-table',ordertableCtrl.getOrderTableDetails)
+
+// generate Email
+app.get("/send-email",emailCtrl.sendEmail)
+app.get("/create-pdf-file",pdfCtrl.getPdfFile)
 
 // User.sync({ force: true })
 // Contact.sync({ force: true })
