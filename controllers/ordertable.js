@@ -347,67 +347,67 @@ const placeOrder=async(req,res)=>{
     if(getOrderDetails && getOrderDetails.length > 0) {
         const pdfFilePath = path.resolve(__dirname, 'invoice.pdf');
         createInvoice(getOrderDetails, pdfFilePath);
-
-console.log("pdffilepath",pdfFilePath)
-        const config = {
-            Service:"gmail",
-            host:"smtp.gmail.com",
-            secure:false,
-            auth:{
-                user:"21girirajdigital@gmail.com",
-                pass:"yqicxcwynhuuiqzt"
-            }
-        }
-        const mailOptions = {
-            from: '21girirajdigital@gmail.com',
-            to: '21girirajdigital@gmail.com', // Replace with the current user's email address
-            subject: 'Invoice for your order',
-            text: 'Attached is the invoice for your order.',
-            attachments: [
-              {
-                filename: 'invoice.pdf',
-                path: pdfFilePath, // Path to the generated PDF
-              },
-            ],
-          };
-        const transporter = nodemailer.createTransport(config);
-        try{
-            const info =await transporter.sendMail(mailOptions);
-            console.log("inforesponse",info)
-             if(info.accepted.length>0){
-                res.status(200).json({data:"Invice generated!"})
-             }
-        }catch{
-            res.status(200).json({data:"something went wrong!"})
-        }
-    
-        const invoice = {
-            shipping: {
-              name: "John Doe",
-              address: "1234 Main Street",
-              city: "San Francisco",
-              state: "CA",
-              country: "US",
-              postal_code: 94111
-            },
-            items: [
-              {
-                item: "TC 100",
-                description: "Toner Cartridge",
-                quantity: 2,
-                amount: 6000
-              },
-              {
-                item: "USB_EXT",
-                description: "USB Cable Extender",
-                quantity: 1,
-                amount: 2000
-              }
-            ],
-            subtotal: 8000,
-            paid: 0,
-            invoice_nr: 1234
-          };
+       //email code starts
+        console.log("pdffilepath",pdfFilePath)
+        // const config = {
+        //     Service:"gmail",
+        //     host:"smtp.gmail.com",
+        //     secure:false,
+        //     auth:{
+        //         user:"21girirajdigital@gmail.com",
+        //         pass:"yqicxcwynhuuiqzt"
+        //     }
+        // }
+        // const mailOptions = {
+        //     from: '21girirajdigital@gmail.com',
+        //     to: '21girirajdigital@gmail.com', // Replace with the current user's email address
+        //     subject: 'Invoice for your order',
+        //     text: 'Attached is the invoice for your order.',
+        //     attachments: [
+        //       {
+        //         filename: 'invoice.pdf',
+        //         path: pdfFilePath, // Path to the generated PDF
+        //       },
+        //     ],
+        //   };
+        // const transporter = nodemailer.createTransport(config);
+        // try{
+        //     const info =await transporter.sendMail(mailOptions);
+        //     console.log("inforesponse",info)
+        //      if(info.accepted.length>0){
+        //         res.status(200).json({data:"Invice generated!"})
+        //      }
+        // }catch{
+        //     res.status(200).json({data:"something went wrong!"})
+        // }
+      //email code ends
+        // const invoice = {
+        //     shipping: {
+        //       name: "John Doe",
+        //       address: "1234 Main Street",
+        //       city: "San Francisco",
+        //       state: "CA",
+        //       country: "US",
+        //       postal_code: 94111
+        //     },
+        //     items: [
+        //       {
+        //         item: "TC 100",
+        //         description: "Toner Cartridge",
+        //         quantity: 2,
+        //         amount: 6000
+        //       },
+        //       {
+        //         item: "USB_EXT",
+        //         description: "USB Cable Extender",
+        //         quantity: 1,
+        //         amount: 2000
+        //       }
+        //     ],
+        //     subtotal: 8000,
+        //     paid: 0,
+        //     invoice_nr: 1234
+        //   };
         
    }
    

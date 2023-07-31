@@ -29,22 +29,23 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         unique: true
       },
-      // username: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      //   unique: true
-      // },
-      // password: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true
-      // },
-      // role: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true
-      // },
-      // token: {
-      //   type: DataTypes.STRING
-      // }
+      username: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "0" // user role
+      },
+      token: {
+        type: DataTypes.STRING
+      }
     },
     {
       sequelize,

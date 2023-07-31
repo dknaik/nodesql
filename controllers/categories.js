@@ -67,9 +67,9 @@ const createCategory= async(req,res)=>{
       },{
         model:Products
       }],
-      where: {
-        parent_cat_id: null, // Fetch only main categories with parent_cat_id as null
-      },
+      // where: {
+      //   parent_cat_id: null, // Fetch only main categories with parent_cat_id as null
+      // },
       // where: {
       //   parent_cat_id: {
       //     [Sequelize.Op.not]: null, // Fetch only categories with a parent_cat_id

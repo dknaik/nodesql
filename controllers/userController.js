@@ -81,9 +81,11 @@ let login = async (req, res) => {
   if (email && password) {
     console.log("emailll", email, password)
     const user = await User.findOne({ where: { email: email } })
+    console.log("user---->",user)
     if (user) {
       req.user = user
       const passwordMatch = await bcrypt.compare(password, user.password)
+      console.log("passwordMatch--->",passwordMatch)
       if (passwordMatch) {
         const token = generateToken(user.id, res)
         user.token = token

@@ -36,10 +36,12 @@ const addProductToCart=async(req,res)=>{
         ]
        })
        if(!existingProduct){
+        //If not a existing product create a new entry in cart table
            const createCartItem=await cartTable.create({...req.body});
            res.status(200).json({data:createCartItem})
          return
        }else{
+        //increase the quantity of the product.
            existingProduct.quantity=1+ +existingProduct.quantity;
          await existingProduct.save()
        }

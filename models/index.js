@@ -30,15 +30,15 @@ const dropTables = async () => {
     // Drop the userContacts table first
     // await db.userContacts.drop();
     // await db.categories.drop();
-    // await db.orderTable.drop()
+    await db.orderTable.drop()
     // Drop the contact and user tables
-    // await db.contact.drop();
-    // await db.user.drop();
-    // await db.products.drop();
-    // await db.cartTable.drop();
+    await db.contact.drop();
+    await db.user.drop();
+    await db.products.drop();
+    await db.cartTable.drop();
     // await db.cartProducts.drop();
-      //  await db.orderItems.drop();
-      //  await db.orderTable.drop();
+       await db.orderItems.drop();
+       await db.orderTable.drop();
      await db.invoice.drop();
 
     console.log('Tables dropped successfully.');
@@ -67,6 +67,8 @@ db.categories.hasMany(db.categories, {
   onDelete: 'CASCADE',
 });
 
+db.categories.hasMany(db.products,{foreignKey:'parent_cat_id'})
+db.products.hasMany(db.categories,{foreignKey:"parent_cat_id"})
 //Many-to-Many
 // db.user.belongsToMany(db.contact,{through:'user_contacts'});
 //now created manually a model
@@ -74,7 +76,6 @@ db.categories.hasMany(db.categories, {
 
 // db.contact.belongsToMany(db.user,{through:'user_contacts'});
 // db.contact.belongsToMany(db.user,{through:db.userContacts});
-db.categories.hasMany(db.products,{foreignKey:'parent_cat_id'})
 
 db.user.hasMany(db.cartTable,{foreignKey:'user_id',onDelete:'CASCADE'})
 db.cartTable.belongsTo(db.user,{foreignKey:'user_id',onDelete:'CASCADE'})

@@ -25,7 +25,7 @@ let cartCtrl=require("./controllers/cart")
 let ordertableCtrl = require("./controllers/ordertable")
 let emailCtrl= require("./controllers/email")
 const Joi = require("joi")
-const { isAuthenticatedUser } = require("./middleware/auth")
+const { isAuthenticatedUser, isAdmin } = require("./middleware/auth")
 // const sequelize = require("./models")
 // require("./models/index")
 app.use(bodyParser.json())
@@ -110,9 +110,11 @@ const validationMiddleWareLogin = (req, res, next) => {
   }
 }
 app.post("/users", userCtrl.createUser)
-app.get("/users", userCtrl.getUsers)
-// app.post("/login", validationMiddleWareLogin, userCtrl.login)
-// app.get("/users", isAuthenticatedUser, userCtrl.getUsers)
+app.get("/users",isAuthenticatedUser, userCtrl.getUsers)
+app.post("/login",userCtrl.login)
+app.get("/users", 
+isAuthenticatedUser,
+ userCtrl.getUsers)
 
 // app.post("/logout", userCtrl.logout)
 app.delete("/users/:id", userCtrl.deleteUser)
@@ -124,7 +126,7 @@ app.get('/one-to-many',userCtrl.oneToManyUser);
 app.get('/many-to-many',userCtrl.manyToManyUser);
 app.get('/paranoid',userCtrl.paranoidUser);
 /////////////Categories API
-app.post('/create-category',categoryCtrl.createCategory);
+app.post('/create-category',isAuthenticatedUser,isAdmin,categoryCtrl.createCategory);
 app.post('/create-subcategory',categoryCtrl.createSubCategory);
 app.get('/get-only-category',categoryCtrl.onlyGetCategories)
 app.get('/get-only-subcategory/:id',categoryCtrl.onlyGetSubCategoriesByCatId)
@@ -158,6 +160,9 @@ app.get("/create-pdf-file",pdfCtrl.getPdfFile)
 // Contact.sync({ force: true })
 //No  need to write again and again
 //sync from  Sequilize
+
+//Admin routes
+
 app.listen(3010, () => {
   console.log("App is running on: http://localhost:3010")
 })

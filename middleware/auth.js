@@ -35,7 +35,12 @@ const isAuthenticatedUser = async (req, res, next) => {
 }
 
 const isAdmin = async (req,res,next)=>{
-  
+  console.log("adminusercheck",req.user.role)
+  if(req.user.role!=1){
+     return res.status(403).json({message:"User cannot Acess this route"})
+  }else{
+    next()
+  }
 }
 
-module.exports = { isAuthenticatedUser }
+module.exports = { isAuthenticatedUser,isAdmin }

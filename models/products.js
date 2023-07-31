@@ -23,3 +23,4 @@ module.exports = (sequelize,DataTypes)=>{
       })
       return Product
 }
+//need to add catgeory id ion Products then only can get list of products in perticular categroy or sub category
