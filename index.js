@@ -116,7 +116,7 @@ app.get("/users",
 isAuthenticatedUser,
  userCtrl.getUsers)
 
-// app.post("/logout", userCtrl.logout)
+app.post("/logout", userCtrl.logout)
 app.delete("/users/:id", userCtrl.deleteUser)
 app.patch("/users/:id", userCtrl.userPatch)
 app.get("/queryusers", userCtrl.getQueryData)
@@ -132,8 +132,8 @@ app.get('/get-only-category',categoryCtrl.onlyGetCategories)
 app.get('/get-only-subcategory/:id',categoryCtrl.onlyGetSubCategoriesByCatId)
 app.put('/update-subcategory/:id',categoryCtrl.updateSubCategory);
 app.put('/update-category/:id',categoryCtrl.updateCategory);
-app.get('/get-categories',categoryCtrl.getCategory)
-app.get('/delete-category/:id',categoryCtrl.deleteCategory)
+app.get('/get-categories',isAuthenticatedUser,categoryCtrl.getCategory)
+app.get('/delete-category/:id',isAuthenticatedUser,categoryCtrl.deleteCategory)
 
 
 /////Product API

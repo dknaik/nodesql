@@ -287,7 +287,7 @@ const placeOrder=async(req,res)=>{
     //get cart Items
     const cartItems = await cartTable.findAll({
         where:{
-           user_id:2
+           user_id:1
         },
         include:[
             {
@@ -349,37 +349,37 @@ const placeOrder=async(req,res)=>{
         createInvoice(getOrderDetails, pdfFilePath);
        //email code starts
         console.log("pdffilepath",pdfFilePath)
-        // const config = {
-        //     Service:"gmail",
-        //     host:"smtp.gmail.com",
-        //     secure:false,
-        //     auth:{
-        //         user:"21girirajdigital@gmail.com",
-        //         pass:"yqicxcwynhuuiqzt"
-        //     }
-        // }
-        // const mailOptions = {
-        //     from: '21girirajdigital@gmail.com',
-        //     to: '21girirajdigital@gmail.com', // Replace with the current user's email address
-        //     subject: 'Invoice for your order',
-        //     text: 'Attached is the invoice for your order.',
-        //     attachments: [
-        //       {
-        //         filename: 'invoice.pdf',
-        //         path: pdfFilePath, // Path to the generated PDF
-        //       },
-        //     ],
-        //   };
-        // const transporter = nodemailer.createTransport(config);
-        // try{
-        //     const info =await transporter.sendMail(mailOptions);
-        //     console.log("inforesponse",info)
-        //      if(info.accepted.length>0){
-        //         res.status(200).json({data:"Invice generated!"})
-        //      }
-        // }catch{
-        //     res.status(200).json({data:"something went wrong!"})
-        // }
+        const config = {
+            Service:"gmail",
+            host:"smtp.gmail.com",
+            secure:false,
+            auth:{
+                user:"21girirajdigital@gmail.com",
+                pass:"yqicxcwynhuuiqzt"
+            }
+        }
+        const mailOptions = {
+            from: '21girirajdigital@gmail.com',
+            to: '21girirajdigital@gmail.com', // Replace with the current user's email address
+            subject: 'Invoice for your order',
+            text: 'Attached is the invoice for your order.',
+            attachments: [
+              {
+                filename: 'invoice.pdf',
+                path: pdfFilePath, // Path to the generated PDF
+              },
+            ],
+          };
+        const transporter = nodemailer.createTransport(config);
+        try{
+            const info =await transporter.sendMail(mailOptions);
+            console.log("inforesponse",info)
+             if(info.accepted.length>0){
+                res.status(200).json({data:"Invice generated!"})
+             }
+        }catch{
+            res.status(200).json({data:"something went wrong!"})
+        }
       //email code ends
         // const invoice = {
         //     shipping: {

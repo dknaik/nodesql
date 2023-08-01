@@ -63,13 +63,18 @@ const createCategory= async(req,res)=>{
       include:[{
         model:Categories,
         as:'subCategories',
-        attributes:['id','name','description','parent_cat_id']
+        attributes:['id','name','description','parent_cat_id'],
+        include:[
+          {
+            model:Products
+          }
+        ]
       },{
         model:Products
       }],
-      // where: {
-      //   parent_cat_id: null, // Fetch only main categories with parent_cat_id as null
-      // },
+      where: {
+        parent_cat_id: null, // Fetch only main categories with parent_cat_id as null
+      },
       // where: {
       //   parent_cat_id: {
       //     [Sequelize.Op.not]: null, // Fetch only categories with a parent_cat_id
